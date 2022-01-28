@@ -31,18 +31,15 @@ public class Board {
 			direction = direct;
 		}
 	}
-	public int getScore() {
-		return score;
-	}
 	public void initializeBoard() {
 		boardX.clear();
 		boardY.clear();
 		boardX.add(1);
 		boardY.add(1);
-		direction = 3;
-		compare = 15;
+		direction = 2;
+		compare = 10;
 		score = 0;
-		currentY = 1;
+		currentY = 2;
 		currentX = 1;
 		pelletX = random.nextInt(20);
 		pelletY = random.nextInt(20);
@@ -85,11 +82,31 @@ public class Board {
 			break;
 		}
 		if(currentX < 0 || currentY < 0 || currentX > 21 || currentY > 21) {
+			pellet.paint(g, pelletX, pelletY);
+			snake.paint(g,  boardX, boardY);
+			g.setColor(Color.blue);
+			g.setFont(new Font("Areil", Font.PLAIN, 50));
+			g.drawString("Game Over", 200, 350);
+			g.setFont(new Font("Areil", Font.PLAIN, 30));
+			g.drawString("Final Score: " + score, 220, 385);
+			g.setFont(new Font("Areil", Font.PLAIN, 30));
+			g.drawString("Press Enter to replay", 190, 420);
 			isGameOver = true;
+			return;
 		}
 		for(int i = 0; i < boardX.size();i++) {
 			if(boardX.get(i) == currentX && boardY.get(i) == currentY) {
+				pellet.paint(g, pelletX, pelletY);
+				snake.paint(g,  boardX, boardY);
+				g.setColor(Color.blue);
+				g.setFont(new Font("Areil", Font.PLAIN, 50));
+				g.drawString("Game Over", 200, 350);
+				g.setFont(new Font("Areil", Font.PLAIN, 30));
+				g.drawString("Final Score: " + score, 220, 385);
+				g.setFont(new Font("Areil", Font.PLAIN, 30));
+				g.drawString("Press Enter to replay", 190, 420);
 				isGameOver = true;
+				return;
 			}
 		}
 		boardX.add(currentX);
@@ -98,6 +115,6 @@ public class Board {
 		snake.paint(g, boardX, boardY);
 		g.setColor(Color.blue);
 		g.setFont(new Font("Areil", Font.PLAIN, 15));
-		g.drawString("Score: " + score, 600, 20);
+		g.drawString("Score: " + score, 580, 20);
 	}
 }

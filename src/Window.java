@@ -1,18 +1,7 @@
 import java.awt.Canvas;
-
-
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -29,10 +18,10 @@ public class Window extends JFrame{
 	
 	
 	public Window(EventListener e) {
-	    setBounds(1, 1, 700, 700);
+	    setBounds(1, 1, 675, 700);
 		listener = e;
 		setTitle("Snake Game");
-		setResizable(true);
+		setResizable(false);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setFocusable(true);
@@ -48,7 +37,6 @@ public class Window extends JFrame{
 		addKeyListener(new KeyListener());
 	}
 	private class KeyListener extends KeyAdapter{
-		
 		
 		@Override
 		public void keyPressed(KeyEvent event) {
